@@ -2,6 +2,9 @@
 
 The PID Tag Corrector is designed to automate the extraction of equipment tags from Process and Instrumentation Diagrams (P&IDs) based on an inference of nomenclatures. 
 
+## Example
+https://colab.research.google.com/drive/10zbqllpkZ-MtfFjMcZ21XcpgheW8KbBX?usp=sharing
+You will need: filled_image.jpg and the P&ID pdf.
 
 ## Features
 -OCR Enhancement: Processes P&ID images to extract text.
