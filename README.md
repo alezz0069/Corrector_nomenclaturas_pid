@@ -31,7 +31,7 @@ https://colab.research.google.com/drive/10zbqllpkZ-MtfFjMcZ21XcpgheW8KbBX?usp=sh
 
 -dataframe_tags.py: Create dataframes with the tags encountered and the possible errors.
 
-optionally: points out the errors with colors on the input drawing.
+optionally: points out the errors with colors in the input drawing.
 
 ## Usage
 python main_py.py
