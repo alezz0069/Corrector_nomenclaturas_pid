@@ -1,12 +1,10 @@
 # Corrector_nomenclaturas_pid
 Extrae tags de PID y corrige de acuerdo a un patron de tag inferido
 
-
-
 ## Installation
 To set up your environment to run these scripts, clone the repository and install the necessary dependencies.
 
-```bash
+bash
 git clone https://github.com/alezz0069/Corrector_nomenclaturas_pid.git
 cd Corrector_nomenclaturas_pid
 pip install -r requirements.txt
@@ -21,7 +19,7 @@ dataframe_tags.py: Utilizes regex and fuzzy matching to extract and analyze data
 
 
 
-##Usage
+## Usage
 To use these scripts, navigate to the project directory and execute the main script as shown below:
 
 python main_py.py
