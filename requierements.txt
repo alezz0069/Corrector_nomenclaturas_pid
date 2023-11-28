@@ -1,0 +1,33 @@
+# Machine Learning and Neural Network
+tensorflow==2.14.0
+
+# Image Processing
+Pillow==10.1.0
+opencv-python-headless==4.8.1.78
+
+# Document Analysis and OCR
+python-doctr[tf]==0.7.0
+python-doctr[torch]==0.7.0
+pytesseract==0.3.10
+
+
+# PDF Manipulation
+PyPDF2==1.26.0
+pdf2image==1.16.3
+pymupdf==1.23.6
+pdf2jpg==1.1
+
+# Data Manipulation and Analysis
+pandas==1.5.3
+
+# Text Matching and Manipulation
+fuzzywuzzy==0.18.0
+python-Levenshtein==0.23.0
+
+# Machine Learning and Data Processing
+scikit-learn==1.2.2
+
+# Optional Dependencies
+# tensorflow-addons==0.16.1  # Uncomment and specify the version if required
+# tf2onnx==1.15.1            # Uncomment and specify the version if required
+# natsort==8.1.0             # Uncomment and specify the version if required
