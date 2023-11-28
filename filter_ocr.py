@@ -40,7 +40,7 @@ def process_ocr_data(csv_path, image_path, config):
             ocr_data.at[index, 'text_review'] = apply_ocr_to_bbox(img, bbox, config)
     # Replace quotation marks and save the updated OCR data
     ocr_data['text_review'] = ocr_data['text_review'].apply(
-        lambda text: text.replace('.', '-')text.replace('“', '"').replace('”', '"').replace('„', '"').replace('«', '"').replace('»', '"').replace(' ', ''))
+        lambda text: text.replace('.', '-').replace('“', '"').replace('”', '"').replace('„', '"').replace('«', '"').replace('»', '"').replace(' ', ''))
     ocr_data.to_csv("/content/ocr_data.csv", index=False)
     return ocr_data
 
