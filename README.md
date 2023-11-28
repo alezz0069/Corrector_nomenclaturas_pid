@@ -4,18 +4,19 @@ The PID Tag Corrector is designed to automate the extraction of equipment tags f
 
 ## Example
 https://colab.research.google.com/drive/10zbqllpkZ-MtfFjMcZ21XcpgheW8KbBX?usp=sharing
-You will need: filled_image.jpg and the P&ID pdf.
+
+#You will need: filled_image.jpg and the P&ID pdf.
 
 ## Features
 -OCR Enhancement: Processes P&ID images to extract text.
 
--Tag Recognition: Identifies and extracts tag information from complex diagrams.
+-Tag Recognition: Identifies and extracts tag information from complex diagrams based on basic rules.
 
--Pattern Inference: Analyzes existing tags to infer the correct naming pattern.
+-Pattern Inference: Analyzes existing tags to infer the correct naming pattern based on repetitive patterns.
 
--Dataframe Analysis: Employs regular expressions and fuzzy matching for data extraction and analysis.
+-Dataframe Analysis: Employs the patterns found and a fuzzy matching for determining the exact corrected TAGS and the possible errors.
 
--Correction Algorithm: Applies inferred patterns to correct and standardize tag names.
+-Correction Algorithm: Produces the image with the corrections drawn on top in different colors.
 
 ## Components
 -main_py.py: The entry point script orchestrating the correction process.
