@@ -1,25 +1,31 @@
-# Corrector_nomenclaturas_pid
-Extrae tags de PID y corrige de acuerdo a un patron de tag inferido
+# PID Tag Corrector
 
-## Installation
-To set up your environment to run these scripts, clone the repository and install the necessary dependencies.
-
-bash
-git clone https://github.com/alezz0069/Corrector_nomenclaturas_pid.git
-cd Corrector_nomenclaturas_pid
-pip install -r requirements.txt
-
-## Scripts Overview 
-main_py.py: Serves as the central script that coordinates the execution flow of the entire project.
-extract_text_layout.py: Analyzes document layouts by loading and processing page annotations.
-ocr_with_doctr.py: Employs the doctr library for Optical Character Recognition to digitize text from images.
-filter_ocr.py: Refines OCR results, improving the quality of the text extracted from images and documents.
-obtain_patterns.py: Retrieves patterns from textual data sources using advanced extraction techniques.
-dataframe_tags.py: Utilizes regex and fuzzy matching to extract and analyze data within dataframes.
+The PID Tag Corrector is designed to automate the extraction of equipment tags from Process and Instrumentation Diagrams (P&IDs) based on an inference of nomenclatures. 
 
 
+## Features
+-OCR Enhancement: Processes P&ID images to extract text.
+
+-Tag Recognition: Identifies and extracts tag information from complex diagrams.
+
+-Pattern Inference: Analyzes existing tags to infer the correct naming pattern.
+
+-Dataframe Analysis: Employs regular expressions and fuzzy matching for data extraction and analysis.
+
+-Correction Algorithm: Applies inferred patterns to correct and standardize tag names.
+
+## Components
+-main_py.py: The entry point script orchestrating the correction process.
+
+-extract_text_layout.py: Parses P&ID layouts to identify text and tag locations.
+
+-ocr_with_doctr.py: Applies doctr OCR library to convert images to text.
+
+-filter_ocr.py: Filters OCR output to enhance text quality.
+
+-obtain_patterns.py: Infers tagging patterns from the processed text.
+
+-dataframe_tags.py: Analyzes and processes data within pandas dataframes.
 
 ## Usage
-To use these scripts, navigate to the project directory and execute the main script as shown below:
-
 python main_py.py
