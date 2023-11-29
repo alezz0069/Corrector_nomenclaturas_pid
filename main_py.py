@@ -13,6 +13,7 @@ Original file is located at
 !sudo apt install -y tesseract-ocr
 !sudo apt install -y libtesseract-dev
 
+
 import os
 import pandas as pd
 pd.options.mode.chained_assignment = None  # default='warn'
@@ -53,15 +54,16 @@ def main(pdf_path, jpg_path):
     patterns, exact_patterns = obtain_patterns.determine_and_display_patterns(filtered_df, most_common_chars)
 
     # Display the patterns
-    #print("Regex Patterns and Templates:", patterns)
+    print("Regex Patterns and Templates:", patterns)
     print("Exact Patterns:", exact_patterns)
 
     # Compile regex patterns from the obtained patterns
     compiled_tuberia_pattern = re.compile(patterns['TUBERIA_PATTERN']['regex_pattern'])
     compiled_tag_pattern = re.compile(patterns['TAG_PATTERN']['regex_pattern'])
 
+    candidates = pd.read_csv('/content/ocr_data_final_filtered.csv')
     # Process and categorize text using the correct function
-    TAGS_TUBERIAS_CORRECT, TAGS_EQUIPOS_CORRECT, TAGS_TUBERIAS_CLOSE, TAGS_EQUIPOS_CLOSE = dataframe_tags.categorize_text(filtered_df, compiled_tuberia_pattern, compiled_tag_pattern)
+    TAGS_TUBERIAS_CORRECT, TAGS_EQUIPOS_CORRECT, TAGS_TUBERIAS_CLOSE, TAGS_EQUIPOS_CLOSE = dataframe_tags.create_tag_dataframes(candidates, patterns)
     # Save DataFrames as CSV files and print confirmation
     print("Tag extraction successful!")
     TAGS_TUBERIAS_CORRECT.to_csv('/content/TAGS_TUBERIAS_CORRECT.csv', index=False)
@@ -142,4 +144,3 @@ if __name__ == "__main__":
         pdf_path = os.path.join(folder_path, pdf_file)
         print(f"Processing {pdf_path} with {jpg_path}")
         main(pdf_path, jpg_path)
-
