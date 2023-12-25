@@ -62,6 +62,51 @@ def main(pdf_path, jpg_path):
     compiled_tag_pattern = re.compile(patterns['TAG_PATTERN']['regex_pattern'])
 
     candidates = pd.read_csv('/content/ocr_data_final_filtered.csv')
+    #####################################################################ultimo filtrado########
+    df=candidates
+    # Create a dictionary to store the 'remove' values for each index
+    remove_values_dict = {}
+
+    # Function to calculate the area of a bounding box
+    def calculate_bbox_area(bbox):
+        return bbox.area
+
+    # Iterate through each row
+    for index, row in df.iterrows():
+        current_bbox = box(row['x1'], row['y1'], row['x2'], row['y2'])
+        remove = False
+
+        # Check against all other rows
+        for other_index, other_row in df.iterrows():
+            if index != other_index:  # Avoid self-comparison
+                other_bbox = box(other_row['x1'], other_row['y1'], other_row['x2'], other_row['y2'])
+
+                # Check if the bounding boxes overlap
+                if current_bbox.intersects(other_bbox):
+
+                    # Compare the areas of the bounding boxes
+                    if calculate_bbox_area(current_bbox) < calculate_bbox_area(other_bbox):
+                        remove = True
+                    else:
+                        remove_values_dict[other_index] = True
+
+                    break
+
+        # Store the 'remove' value for the current index
+        remove_values_dict[index] = remove
+
+    # Convert the dictionary to a list for DataFrame column
+    remove_values = [remove_values_dict.get(index, False) for index in range(len(df))]
+
+    # Add the 'remove' column to the DataFrame
+    df['remove'] = remove_values
+    # Filter out the rows marked as True in the 'remove' column
+    df = df[df['remove'] == False]
+
+    candidates=df
+    #####################################################################fin de ultimo filtrado########
+
+    
     # Process and categorize text using the correct function
     TAGS_TUBERIAS_CORRECT, TAGS_EQUIPOS_CORRECT, TAGS_TUBERIAS_CLOSE, TAGS_EQUIPOS_CLOSE = dataframe_tags.create_tag_dataframes(candidates, patterns)
     # Save DataFrames as CSV files and print confirmation
@@ -134,8 +179,7 @@ def main(pdf_path, jpg_path):
     # Display the image
     from IPython.display import display, Image
     display(Image(filename=uploaded_image_path))
-    #############################################################################################################################################
-
+    #####################################################################################################Fin de OPTIONAL: Drawing and showing the corrections
 if __name__ == "__main__":
     folder_path = '/content'
     jpg_path = '/content/filled_image.jpg'
